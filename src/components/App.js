@@ -36,7 +36,7 @@ class App extends Component {
                 <h4 >{res.name}</h4>
                 <img className="img-fluid w-25" src={res.image_url} alt={res.name}/>
                 <p>{res.location.display_address[0]} {res.location.display_address[1]}</p>
-                <button className="btn btn-secondary"><a className="text-white" href={res.url}> More Info</a> </button>
+                <button className="btn btn-secondary"><a className="text-white" href={res.url} target="_blank"> More Info</a> </button>
                 </li>
         )}
        </ul>  
