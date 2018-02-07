@@ -11,7 +11,7 @@ class App extends Component {
 
   search = (e) => {
     e.preventDefault();
-    fetch('http://localhost:3002/query',{
+    fetch('https://yelp-server-api.herokuapp.com/query',{
     method:'POST',
     headers: {
       'Accept': 'application/json',
