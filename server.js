@@ -11,6 +11,9 @@ app.use(bodyParser());
 
 const apiKey = 'mWvFHI5rCbnhr2HOObXZxW0m-RcqZauFeUu3lmjhFj7CiX2PXn_OmQLLGDW75upserV8LFyjcCd5yeJWQcEsc3lXBQkMh15Vi2N2KffrMGeGyuB6pxap4GwXDK9vWnYx';
 const client = yelp.client(apiKey);
+app.get('/', (req,res) => {
+res.send('Web Server Started Sucessfully!');
+});
 
 app.post('/query', (req, res) => {
     req.body ? client.search({
