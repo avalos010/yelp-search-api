@@ -1,28 +1,113 @@
-.App {
+* {
+  box-sizing: border-box;
   text-align: center;
 }
-
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+body {
+  background-color:#fff
 }
 
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
+h1 {
+  font-size: 3em;
+  margin-top: -5px;
 }
 
-.App-title {
+.nav .fa,.fa-home   {
+  cursor: pointer;
+  color: #000;
+  text-decoration: none;
+}
+.nav .fa:hover, .fa-home:hover {
+  color: cadetblue;
+}
+
+
+.nav {
+  list-style-type: none;
+
+}
+
+form {
+  display: flex;
+  justify-content: center;
+  flex-direction: column
+}
+form input[type="text"] {
+  height: 3em;
+  border-radius: 15px;
+  outline: none;
+  width: 90%;
+  margin: auto;
+  margin-top: 15px;
+}
+form input[type="submit"] {
+  height: 2.5em;
+  width:50%;
+  margin: auto;
+  cursor: pointer;
+  margin-top: 10px;
+  background: black;
+  color: #fff;
+  border-radius: 30px;
+  font-weight: bold;
+}
+
+.data-list, .fave-list {
+  list-style: none;
+  margin-top: 3em;
+}
+.data-list img,  .fave-list img{
+  max-width: 50%;
+}
+.data-list li, .fave-list li {
+  padding: 1em;
+  border-bottom: 1px solid grey;
+}
+li small, .fa-home small {
+  display: none;
+}
+li:hover small , .fa-home:hover small{
+  display: block;
+  width: 100px;
+  margin: auto;
+  background: #000;
+  color:#fff;
+}
+
+.btn {
+  background: #000;
+  color: #fff;
+  height: 50px;
   font-size: 1.5em;
+  padding: 10px;
+  width: 150px;
+  margin: auto;
+  cursor: pointer;
+  border-radius: 1em;
+}
+.btn:hover {
+  color: #000;
+  background: #fff;
+  font-size: 2em;
+}
+@media (min-width: 800px) {
+form {
+  flex-direction: row;
+
+}
+form input[type="submit"] {
+  height: 3em;
+  width: 350px;
+}
+.data-list, .fave-list {
+  display: flex;
+  flex-direction:row;
+  justify-content: space-around;
+  flex-flow: wrap;
 }
 
-.App-intro {
-  font-size: large;
+.data-list img, .fave-list img {
+
+  width: 450px;
 }
 
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
 }
