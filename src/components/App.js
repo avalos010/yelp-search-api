@@ -1,48 +1,37 @@
 import React, { Component } from 'react';
-import SearchForm from './form.js'
-import logo from '../logo.svg';
-import './App.css';
+import {connect} from 'react-redux';
+import {Link} from 'react-router-dom';
+import {
+  fetchCategories,fetchPosts,addPost,fetchComments} from '../actions/action'
+import '../index.css';
 
 class App extends Component {
-  state = {
-    data: {}
-  }
-
-
-  search = (e) => {
-    e.preventDefault();
-    fetch('https://yelp-server-api.herokuapp.com/query',{
-    method:'POST',
-    headers: {
-      'Accept': 'application/json',
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({term:e.target[0].value, 
-    location:e.target[1].value
-  })
-    }).then(res => res)
-    .then(res => res.json())
-    .then(json => this.setState({data: json}))
-      }
-
+  componentDidMount = () =>  {
+  this.props.fetchCategories();
+  this.props.fetchPosts();
+}
+  
   render() {
     return (
-      <div className="App">
-      <h1> Yelp Search </h1>
-        <SearchForm search={this.search} />
-        <ul className="list-group mt-5">
-        {this.state.data.length > 0  && this.state.data.map(res => 
-              <li className="p-2 list-group-item" key={res.id}>
-                <h4 >{res.name}</h4>
-                <img className="img-fluid w-25" src={res.image_url} alt={res.name}/>
-                <p>{res.location.display_address[0]} {res.location.display_address[1]}</p>
-                <button className="btn btn-secondary"><a className="text-white" href={res.url} target="_blank"> More Info</a> </button>
-                </li>
-        )}
-       </ul>  
+      <div className="App text-center bg-primary text-white">
+     <h1>Readable</h1>
+     <h4> Please Choose A Category! </h4>
+      <ul className="list-group">
+        {
+          this.props.categories.map(categorie =>
+            <Link key={categorie.name} to={categorie.name}><li 
+            className='text-capitalize text-primary list-group-item p2 display-4' 
+            key={categorie.name}> 
+            {categorie.name} 
+            </li></Link>
+          
+    )
+        }
+      </ul>
       </div>
     );
   }
 }
 
-export default App;
+let mapStateToProps = (state) => ({categories: state.categories});
+export default connect(mapStateToProps,{fetchPosts,fetchComments,fetchPosts,fetchCategories ,addPost})(App);
