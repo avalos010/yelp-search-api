@@ -8,6 +8,14 @@ import './App.css';
 
 class App extends Component {
  
+ componentWillMount = () => {
+  //To Wake up server
+    fetch('https://yelp-server-api.herokuapp.com', {
+          method:'GET'
+    })
+    .then(res => res)
+ } 
+ 
   search = (e) => {
     e.preventDefault();
     fetch('https://yelp-server-api.herokuapp.com/query',{
