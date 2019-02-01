@@ -1,5 +1,6 @@
 {
   "name": "yelp-app",
+  "homepage": "http://avalos010.github.io/yelp-search-api",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -14,12 +15,13 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "devDependencies": {
     "eslint-config-prettier": "^4.0.0",
     "eslint-plugin-prettier": "^3.0.1",
-    "gh-pages": "^2.0.1",
     "prettier": "^1.16.3"
   },
   "eslintConfig": {
