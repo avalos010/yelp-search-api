@@ -9,6 +9,7 @@ let list = (state = [], action) => {
         return [...state, action.item];
       } else {
         alert("Already Exists in Faves!");
+        return;
       }
     case REMOVE:
       return state.filter(state => state.id !== action.id);

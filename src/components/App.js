@@ -62,5 +62,5 @@ let mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { addItem}
+  { addItem }
 )(App);
