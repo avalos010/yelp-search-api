@@ -1,8 +1,9 @@
-import React from "react";
-import { setData } from "../actions/action.js";
-import { connect } from "react-redux";
+import React, { useContext } from "react";
+import Context from "../context";
 
-let SearchForm = props => {
+let SearchForm = () => {
+  const { state, dispatch } = useContext(Context);
+
   const search = async e => {
     e.preventDefault();
     const response = await fetch(
@@ -20,7 +21,10 @@ let SearchForm = props => {
       }
     );
     const json = await response.json();
-    props.setData(json);
+    // props.setData(json);
+
+    dispatch({ type: "DATA", payload: json });
+    console.log("this is the react state", state);
   };
 
   return (
@@ -32,12 +36,4 @@ let SearchForm = props => {
   );
 };
 
-let mapStateToProps = state => ({
-  data: state.data,
-  list: state.list
-});
-
-export default connect(
-  mapStateToProps,
-  { setData }
-)(SearchForm);
+export default SearchForm;
